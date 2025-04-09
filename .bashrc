@@ -112,9 +112,14 @@ plugins=(
 if [ "$DISPLAY" ] || [ "$SSH" ]; then
       plugins+=(tmux-autoattach)
   fi
+
+
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    exec tmux
-    fi
+    tmux attach || tmux new-session
+fi
+
+
+
 source "$OSH"/oh-my-bash.sh
 
 # User configuration
@@ -168,7 +173,7 @@ alias tb="nc termbin.com 9999"
 
 # the terminal rickroll
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
-
+alias cl="clear && echo "bOkA" | h1 | cool"
 alias ..='cd ..'
 alias ...='cd ../../../'
 alias ....='cd ../../../../'
@@ -224,3 +229,42 @@ alias g="sudo ghidra"
 alias postgres="sudo service postgresql restart"
 alias msfconsole="sudo msfconsole"
 alias cls="clear"
+alias cool="lolcat"
+alias cool1="cmatrix | lolcat"
+alias h1="figlet"
+alias quote="fortune"
+alias slowtype="pv -qL 10"
+alias clear="clear"
+alias c="clear && echo "bOkA" | h1 | cool"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+clear
+echo ""
+echo -e "\033[1;31m \033[0m"
+echo -e "\033[1;31m Welcome, bOkAxT! Today is: $(date) \033[0m"
+echo -e "\033[1;34m Your IP Address: 127.0.0.1 \033[0m"
+echo -e "\033[1;32m Uptime: $(uptime -p) \033[0m"
+echo -e "\033[1;33m Logged in as: $USER \033[0m"
+echo ""
+
+
+# Optional: Cow says something dumb
+if command -v cowsay &> /dev/null; then
+    fortune | cowsay | cool
+fi
+
+echo ""
+
