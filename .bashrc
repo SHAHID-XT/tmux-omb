@@ -5,14 +5,16 @@ case $- in
 esac
 
 # Path to your oh-my-bash installation.
-export OSH='/home/boka/.oh-my-bash'
+export OSH='/home/kali/.oh-my-bash'
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
-OSH_THEME="rjorgenson"
+OSH_THEME="font"
 
 # If you set OSH_THEME to "random", you can ignore themes you don't like.
 # OMB_THEME_RANDOM_IGNORED=("powerbash10k" "wanelo")
+# You can also specify the list from which a theme is randomly selected:
+# OMB_THEME_RANDOM_CANDIDATES=("font" "powerline-light" "minimal")
 
 # Uncomment the following line to use case-sensitive completion.
 # OMB_CASE_SENSITIVE="true"
@@ -34,7 +36,7 @@ OSH_THEME="rjorgenson"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -79,6 +81,10 @@ OMB_USE_SUDO=true
 # OMB_PROMPT_SHOW_PYTHON_VENV=true  # enable
 # OMB_PROMPT_SHOW_PYTHON_VENV=false # disable
 
+# To enable/disable Spack environment information
+# OMB_PROMPT_SHOW_SPACK_ENV=true  # enable
+# OMB_PROMPT_SHOW_SPACK_ENV=false # disable
+
 # Which completions would you like to load? (completions can be found in ~/.oh-my-bash/completions/*)
 # Custom completions may be added to ~/.oh-my-bash/custom/completions/
 # Example format: completions=(ssh git bundler gem pip pip3)
@@ -93,9 +99,7 @@ completions=(
 # Custom aliases may be added to ~/.oh-my-bash/custom/aliases/
 # Example format: aliases=(vagrant composer git-avh)
 # Add wisely, as too many aliases slow down shell startup.
-aliases=(
-  general
-)
+#aliases=general
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-bash/plugins/*)
 # Custom plugins may be added to ~/.oh-my-bash/custom/plugins/
@@ -109,16 +113,16 @@ plugins=(
 # Which plugins would you like to conditionally load? (plugins can be found in ~/.oh-my-bash/plugins/*)
 # Custom plugins may be added to ~/.oh-my-bash/custom/plugins/
 # Example format:
-if [ "$DISPLAY" ] || [ "$SSH" ]; then
-      plugins+=(tmux-autoattach)
-  fi
+#  if [ "$DISPLAY" ] || [ "$SSH" ]; then
+#      plugins+=(tmux-autoattach)
+#  fi
 
-
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    tmux attach || tmux new-session
-fi
-
-
+# If you want to reduce the initialization cost of the "tput" command to
+# initialize color escape sequences, you can uncomment the following setting.
+# This disables the use of the "tput" command, and the escape sequences are
+# initialized to be the ANSI version:
+#
+#OMB_TERM_USE_TPUT=no
 
 source "$OSH"/oh-my-bash.sh
 
@@ -146,6 +150,9 @@ source "$OSH"/oh-my-bash.sh
 # users are encouraged to define aliases within the OSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+# Example aliases
+# alias bashconfig="mate ~/.bashrc"
+# alias ohmybash="mate ~/.oh-my-bash"
 # Example aliases
 # alias bashconfig="mate ~/.bashrc"
 alias ohmybash="mate ~/.oh-my-bash"
@@ -192,7 +199,7 @@ alias reloadzsh='source ~/.zshrc'
 alias psg='ps aux | grep'
 alias nano='nano -w'
 alias vi='vim'
-# alias myip='curl http://ipinfo.io/ip'
+alias myip='curl http://ipinfo.io/ip'
 alias flushdns='sudo systemd-resolve --flush-caches'
 alias update='sudo apt-get update && sudo apt-get upgrade'
 alias urlencode='python -c "import sys, urllib.parse as ul; print(ul.quote_plus(sys.argv[1]))"'
@@ -259,12 +266,6 @@ echo -e "\033[1;34m Your IP Address: 127.0.0.1 \033[0m"
 echo -e "\033[1;32m Uptime: $(uptime -p) \033[0m"
 echo -e "\033[1;33m Logged in as: $USER \033[0m"
 echo ""
-
-
-# Optional: Cow says something dumb
-if command -v cowsay &> /dev/null; then
-    fortune | cowsay | cool
-fi
 
 echo ""
 
