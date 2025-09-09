@@ -1,167 +1,40 @@
-# Enable the subsequent settings only in interactive sessions
-case $- in
-  *i*) ;;
-    *) return;;
-esac
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
 
-# Path to your oh-my-bash installation.
-export OSH='/home/kali/.oh-my-bash'
+export OSH=$HOME/.oh-my-bash
+OSH_THEME="ht"
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-bash is loaded.
-OSH_THEME="font"
 
-# If you set OSH_THEME to "random", you can ignore themes you don't like.
-# OMB_THEME_RANDOM_IGNORED=("powerbash10k" "wanelo")
-# You can also specify the list from which a theme is randomly selected:
-# OMB_THEME_RANDOM_CANDIDATES=("font" "powerline-light" "minimal")
+#encoding fix
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
-# Uncomment the following line to use case-sensitive completion.
-# OMB_CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# OMB_HYPHEN_SENSITIVE="false"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_OSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you don't want the repository to be considered dirty
-# if there are untracked files.
-# SCM_GIT_DISABLE_UNTRACKED_DIRTY="true"
-
-# Uncomment the following line if you want to completely ignore the presence
-# of untracked files in the repository.
-# SCM_GIT_IGNORE_UNTRACKED="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.  One of the following values can
-# be used to specify the timestamp format.
-# * 'mm/dd/yyyy'     # mm/dd/yyyy + time
-# * 'dd.mm.yyyy'     # dd.mm.yyyy + time
-# * 'yyyy-mm-dd'     # yyyy-mm-dd + time
-# * '[mm/dd/yyyy]'   # [mm/dd/yyyy] + [time] with colors
-# * '[dd.mm.yyyy]'   # [dd.mm.yyyy] + [time] with colors
-# * '[yyyy-mm-dd]'   # [yyyy-mm-dd] + [time] with colors
-# If not set, the default value is 'yyyy-mm-dd'.
-# HIST_STAMPS='yyyy-mm-dd'
-
-# Uncomment the following line if you do not want OMB to overwrite the existing
-# aliases by the default OMB aliases defined in lib/*.sh
-# OMB_DEFAULT_ALIASES="check"
-
-# Would you like to use another custom folder than $OSH/custom?
-# OSH_CUSTOM=/path/to/new-custom-folder
-
-# To disable the uses of "sudo" by oh-my-bash, please set "false" to
-# this variable.  The default behavior for the empty value is "true".
 OMB_USE_SUDO=true
 
-# To enable/disable display of Python virtualenv and condaenv
-# OMB_PROMPT_SHOW_PYTHON_VENV=true  # enable
-# OMB_PROMPT_SHOW_PYTHON_VENV=false # disable
-
-# To enable/disable Spack environment information
-# OMB_PROMPT_SHOW_SPACK_ENV=true  # enable
-# OMB_PROMPT_SHOW_SPACK_ENV=false # disable
-
-# Which completions would you like to load? (completions can be found in ~/.oh-my-bash/completions/*)
-# Custom completions may be added to ~/.oh-my-bash/custom/completions/
-# Example format: completions=(ssh git bundler gem pip pip3)
-# Add wisely, as too many completions slow down shell startup.
 completions=(
   git
   composer
   ssh
 )
 
-# Which aliases would you like to load? (aliases can be found in ~/.oh-my-bash/aliases/*)
-# Custom aliases may be added to ~/.oh-my-bash/custom/aliases/
-# Example format: aliases=(vagrant composer git-avh)
-# Add wisely, as too many aliases slow down shell startup.
-#aliases=general
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-bash/plugins/*)
-# Custom plugins may be added to ~/.oh-my-bash/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
   bashmarks
 )
 
-# Which plugins would you like to conditionally load? (plugins can be found in ~/.oh-my-bash/plugins/*)
-# Custom plugins may be added to ~/.oh-my-bash/custom/plugins/
-# Example format:
-#  if [ "$DISPLAY" ] || [ "$SSH" ]; then
-#      plugins+=(tmux-autoattach)
-#  fi
 
-# If you want to reduce the initialization cost of the "tput" command to
-# initialize color escape sequences, you can uncomment the following setting.
-# This disables the use of the "tput" command, and the escape sequences are
-# initialized to be the ANSI version:
-#
-#OMB_TERM_USE_TPUT=no
 
 source "$OSH"/oh-my-bash.sh
 
-# User configuration
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-bash libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-bash
-# users are encouraged to define aliases within the OSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias bashconfig="mate ~/.bashrc"
-# alias ohmybash="mate ~/.oh-my-bash"
-# Example aliases
-# alias bashconfig="mate ~/.bashrc"
 alias ohmybash="mate ~/.oh-my-bash"
-#alias blackarch_data='sudo pacman -Sg | grep blackarch'
 alias disk_check="qdirstat"
 alias tryhackme="sudo killall openvpn;sudo openvpn /home/xt/Documents/TryHackMe/bOkA.ovpn"
 alias hackthebox='sudo killall openvpn; sudo openvpn /home/xt/Documents/HackTheBox/starting_point_shahidxt.ovpn'
 alias hibernate='systemctl hibernate'
-#alias nc="ncat"
 alias nmap_basic='mkdir scans; nmap -sC -T4 -sV -oN scans/nmap_initial'
 alias nmap_all_ports='mkdir scans; nmap -sC -T4 -sV -p- -oN scans/nmap_all_ports'
 alias please='sudo'
@@ -175,10 +48,8 @@ alias rustscan='sudo docker run -it --rm --name rustscan rustscan/rustscan:lates
 alias install='sudo apt install'
 alias myip='echo "Public Ip : $(dig +short txt ch whoami.cloudflare @1.0.0.1 | cut -d \" -f 2)"'
 alias ipconfig="ifconfig"
-# termbin
 alias tb="nc termbin.com 9999"
 
-# the terminal rickroll
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 alias cl="clear && echo "bOkA" | h1 | cool"
 alias ..='cd ..'
@@ -216,12 +87,10 @@ alias gc='git commit'
 alias gp='git push'
 alias sshkey='cat ~/.ssh/id_rsa.pub | xclip -selection c'
 alias chmodx='chmod +x'
-# alias up="ip -f inet addr show tun0 | echo \"http://\`grep -Po 'inet \K[\d.]+'\`/\"; echo $PWD; sudo python3 -m http.server 80"
 alias ducks='du -cks * | sort -rn | head'
 alias strings='strings -a'
 alias hexdump='xxd'
 alias open="xdg-open"
-# alias vim="micro"
 alias chromium="chromium --no-sandbox"
 alias j=john $1 --wordlist=/usr/share/wordlists/rockyou.txt
 alias fix="stty -a | sed 's/;//g' | head -n 1 | sed 's/.*baud /s│ tty /g;s/line.*//g' | xclip -sel clip && stty raw -echo; fg"
@@ -259,13 +128,59 @@ alias c="clear && echo "bOkA" | h1 | cool"
 
 
 clear
+
+RED='\033[1;31m'
+GRN='\033[1;32m'
+YEL='\033[1;33m'
+BLU='\033[1;34m'
+PRP='\033[1;35m'
+CYN='\033[1;36m'
+WHT='\033[1;37m'
+RESET='\033[0m'
+
+
+# Pick a random quote from /opt/.quotes
+if [[ -f /opt/.quotes ]]; then
+    RANDOM_QUOTE=$(shuf -n 1 /opt/.quotes)
+else
+    RANDOM_QUOTE="Your VM is ready, are you?"
+fi
+
+IST_TIME=$(TZ=Asia/Kolkata date '+%I:%M:%S %p')
+
+echo -e "${RED}╔═══════════════════════════════════════════╗${RESET}"
+echo -e "${RED}║${RESET} ${PRP}⛧ ${GRN} - Born in /tmp. Raised in /root. - ${RESET} ${PRP} ⛧${GRN}"
+echo -e "${RED}╚═══════════════════════════════════════════╝${RESET}"
+
+echo -e "${CYN}⟶${RESET} ${YEL}Date     :${RESET} $(TZ=Asia/Kolkata date '+%A %d %B %Y')"
+echo -e "${CYN}⟶${RESET} ${YEL}Time     :${RESET} ${IST_TIME} ${CYN}(IST)${RESET}"
+echo -e "${CYN}⟶${RESET} ${YEL}User     :${RESET} $USER"
+echo -e "${CYN}⟶${RESET} ${YEL}IP       :${RESET} 127.0.0.1"
+echo -e "${CYN}⟶${RESET} ${YEL}Uptime   :${RESET} $(uptime -p)"
 echo ""
-echo -e "\033[1;31m \033[0m"
-echo -e "\033[1;31m Welcome, bOkAxT! Today is: $(date) \033[0m"
-echo -e "\033[1;34m Your IP Address: 127.0.0.1 \033[0m"
-echo -e "\033[1;32m Uptime: $(uptime -p) \033[0m"
-echo -e "\033[1;33m Logged in as: $USER \033[0m"
+echo -e "${GRN}⚔  ${RANDOM_QUOTE}${RESET}"
 echo ""
 
-echo ""
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Auto-start tmux: attach to first session or create one if none exist
+#if command -v tmux &>/dev/null && [ -z "$TMUX" ] && [ -n "$PS1" ]; then
+#  tmux has-session 2>/dev/null && \
+#    tmux attach-session -t "$(tmux ls | head -n 1 | cut -d: -f1)" || \
+#    tmux new -s "bOkA "
+#fi
+
+export PATH=$PATH:$(go env GOPATH)/bin
