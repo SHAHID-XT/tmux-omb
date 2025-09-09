@@ -184,3 +184,60 @@ echo ""
 #fi
 
 export PATH=$PATH:$(go env GOPATH)/bin
+
+
+
+
+
+
+
+
+#Void Function
+void() {
+    trap "tput sgr0; tput clear; echo -e '\033[1;32m[VM READY] Are you focused?\033[0m'; exit" SIGINT
+    mode=$1
+    rows=$(tput lines)
+    cols=$(tput cols)
+
+    show_quote() {
+        quote="$1"
+        tput clear
+
+        # Prepare binary matrix
+        binary_matrix=""
+        for ((i=0;i<rows;i++)); do
+            line=""
+            for ((j=0;j<cols;j++)); do
+                if (( RANDOM % 20 == 0 )); then
+                    line+="$(shuf -n1 -e 0 1)"
+                else
+                    line+=" "
+                fi
+            done
+            binary_matrix+="$line"$'\n'
+        done
+
+        # Print binary background
+        echo -e "\033[2;32m$binary_matrix\033[0m"
+
+        # Center the quote
+        quote_lines=$(echo "$quote" | fold -w $cols)
+        num_lines=$(echo "$quote_lines" | wc -l)
+        start_row=$(( (rows - num_lines) / 2 ))
+        tput cup $start_row $(( (cols - ${#quote}) / 2 ))
+        echo -e "\033[1;32m$quote\033[0m"
+    }
+
+    if [[ "$mode" == "1" ]]; then
+        while true; do
+            quote=$(shuf -n 1 /opt/.quotes)
+            show_quote "$quote"
+            sleep 5
+        done
+    else
+        quote=$(shuf -n 1 /opt/.quotes)
+        show_quote "$quote"
+        # Stay on the same page until Ctrl+C
+        while true; do sleep 1; done
+    fi
+}
