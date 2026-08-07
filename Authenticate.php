@@ -317,15 +317,15 @@ if($focus->is_authenticated()) {
 } else {
 
 	if(ENABLE_CAPTCHA && !$_REQUEST['param']){
-		if (!$captcha_status['success'] && !empty($captchaErrorMessage) && !isset($_SESSION['isGooglereCAPTCHAValidated']) ) {
-			session_destroy();
-			session_start();
-        	$_SESSION['login_error'] = $captchaErrorMessage;
-			header("Location: index.php");
-			exit();
-    	}elseif(empty($_SESSION['isGooglereCAPTCHAValidated'])){
-			$_SESSION['isGooglereCAPTCHAValidated'] = TRUE;
-		}
+		// if (!$captcha_status['success'] && !empty($captchaErrorMessage) && !isset($_SESSION['isGooglereCAPTCHAValidated']) ) {
+		// 	session_destroy();
+		// 	session_start();
+        // 	$_SESSION['login_error'] = $captchaErrorMessage;
+		// 	header("Location: index.php");
+		// 	exit();
+    	// }elseif(empty($_SESSION['isGooglereCAPTCHAValidated'])){
+		// 	$_SESSION['isGooglereCAPTCHAValidated'] = TRUE;
+		// }
 
 	}
 	
