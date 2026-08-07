@@ -440,6 +440,6 @@ function updateSessionDataForWebApp($username, $sessionid, $appname, $ip_address
 											 ip = '".$ip_address."',
 											 status = 'A'");
 	}
-	//return $result;
+	return $result;
 } 
 ?>
