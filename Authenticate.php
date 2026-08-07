@@ -74,26 +74,26 @@ if($AUTO_LOGIN_FROM_OUTLOOK_TO_PECRM == 'on' && !empty($_REQUEST['param'])){
 	$focus->load_user($user_password,$_REQUEST['ol_login_key']);
 
 	if(ENABLE_CAPTCHA){
-		$secret = GOOGLE_SECRET_KEY;
-		$recaptchaResponse = $_POST['g-recaptcha-response'];
-		$userIp = getenv("REMOTE_ADDR") ;
-		$url="https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$recaptchaResponse."&remoteip=".$userIp;
-		$ch = curl_init(); 
-		curl_setopt($ch, CURLOPT_URL, $url); 
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		// For localhost
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-		$output = curl_exec($ch); 
-		if (curl_errno($ch)) {
-			$error_msg = curl_error($ch);
-		}
-		curl_close($ch);      
-		$captcha_status= json_decode($output, true);
+		// $secret = GOOGLE_SECRET_KEY;
+		// $recaptchaResponse = $_POST['g-recaptcha-response'];
+		// $userIp = getenv("REMOTE_ADDR") ;
+		// $url="https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$recaptchaResponse."&remoteip=".$userIp;
+		// $ch = curl_init(); 
+		// curl_setopt($ch, CURLOPT_URL, $url); 
+		// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		// // For localhost
+		// curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+		// curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+		// $output = curl_exec($ch); 
+		// if (curl_errno($ch)) {
+		// 	$error_msg = curl_error($ch);
+		// }
+		// curl_close($ch);      
+		// $captcha_status= json_decode($output, true);
 
-		if (empty($recaptchaResponse)) {
-		    $captchaErrorMessage = "Sorry, we could not verify that you are a human. Please try again.";
-		}
+		// if (empty($recaptchaResponse)) {
+		//     $captchaErrorMessage = "Sorry, we could not verify that you are a human. Please try again.";
+		// }
 	}
 
 }
@@ -105,15 +105,15 @@ if($focus->is_authenticated()) {
 	unset($_SESSION['login_error']);
 
 	if(ENABLE_CAPTCHA && !$_REQUEST['param']){
-		if (!$captcha_status['success'] && !empty($captchaErrorMessage) && !isset($_SESSION['isGooglereCAPTCHAValidated']) ) {
-			session_destroy();
-			session_start();
-        	$_SESSION['login_error'] = $captchaErrorMessage;
-			header("Location: index.php");
-			exit();
-    	}elseif(empty($_SESSION['isGooglereCAPTCHAValidated'])){
-			$_SESSION['isGooglereCAPTCHAValidated'] = TRUE;
-		}
+		// if (!$captcha_status['success'] && !empty($captchaErrorMessage) && !isset($_SESSION['isGooglereCAPTCHAValidated']) ) {
+		// 	session_destroy();
+		// 	session_start();
+        // 	$_SESSION['login_error'] = $captchaErrorMessage;
+		// 	header("Location: index.php");
+		// 	exit();
+    	// }elseif(empty($_SESSION['isGooglereCAPTCHAValidated'])){
+		// 	$_SESSION['isGooglereCAPTCHAValidated'] = TRUE;
+		// }
 
 	}
 
