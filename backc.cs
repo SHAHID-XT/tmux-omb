@@ -1,5 +1,4 @@
 
-#CODE-START#
 using System;
 using System.Text;
 using System.Net.Sockets;
@@ -221,4 +220,3 @@ namespace ReverseShell
     }
 }
 
-#CODE-END#
